@@ -1,4 +1,4 @@
-package bogdan.roatis.lib;
+package bogdan.roatis.check;
 
 import org.junit.Test;
 
