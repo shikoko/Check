@@ -8,6 +8,7 @@ package bogdan.roatis.check
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.Outline
 import android.graphics.Paint
 import android.graphics.Paint.ANTI_ALIAS_FLAG
@@ -49,6 +50,7 @@ class Check @JvmOverloads constructor(
             if (field != value) {
                 field = value
                 dotPaint.color = value
+                selectedTextColor = if(isDark(value)) Color.WHITE else Color.BLACK
                 postInvalidateOnAnimation()
             }
         }
@@ -306,4 +308,6 @@ class Check @JvmOverloads constructor(
         private const val SELECTING_DURATION = 350L
         private const val DESELECTING_DURATION = 200L
     }
+
+    private fun isDark(color: Int) = ColorUtils.calculateLuminance(color) < 0.5
 }
